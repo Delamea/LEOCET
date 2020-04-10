@@ -14,3 +14,9 @@ Compute the gravity force of a perfect spherical earth
     """
     f = (-1 * G * M_T) / ((x[0] ** 2 + x[1] ** 2 + x[2] ** 2) ** (3 / 2))  # Term appearing on all axes
     return [f * x[0], f * x[1], f * x[2]]
+
+
+def solar_gravity(position, solar_position):
+    return (-1 * G * M_S) / (norm(solar_position - position) ** 3) * (solar_position - position)
+
+

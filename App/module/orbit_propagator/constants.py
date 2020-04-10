@@ -4,9 +4,10 @@
 from App.data.load import geocentric_position
 
 # Constants definition
-G = 6.67408 * 10 ** -11  # universal gravitational constant
+G = 6.67408 * 10 ** -17  # universal gravitational constant
 M_T = 5.972 * 10 ** 24  # Earth mass
 R_T = 6371 * 10 ** 3  # Earth Radius
+M_S = 1.989 * 10 ** 30
 
 
 class Body:

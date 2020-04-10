@@ -1,6 +1,6 @@
-"""This file contain function that compute the different forces"""
+"""This file contains function that compute the different forces"""
 
-# Import provided files
+# Importing required modules
 from App.module.orbit_propagator.constants import *
 
 
@@ -8,7 +8,7 @@ from App.module.orbit_propagator.constants import *
 
 def earth_spherical_gravity_force(x):
     """
-    Compute the gravity force of a perfect spherical earth
+Compute the gravity force of a perfect spherical earth
     :param x: position vector in the cartesian basis
     :return: the force vector expressed in the cartesian basis
     """

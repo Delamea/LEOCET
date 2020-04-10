@@ -1,7 +1,7 @@
 """This file contains the function that download skyfield's data required by the software"""
 
 # Import required methods
-from skyfield.api import Loader, load
+from skyfield.api import Loader, load, load_file
 
 # Specify the targeted directory
 load = Loader('./data', verbose=False)
@@ -13,3 +13,19 @@ def updateDataFiles():
     ts = load.timescale()
     planets = load('de421.bsp')
     print("Data files have been updated.")
+
+
+def geocentric_position(body_name, time):
+    """
+Compute the position of a body in the geocentric frame.
+    :param body_name: body whose position is looking for
+    :param time: seek time
+    :return: position vector [x,y,z] where x, y, z are in km
+    """
+    planets = load_file('./de421.bsp')
+    body = planets[body_name]
+    earth = planets['earth']
+
+    body_position = body.at(time).position.km
+    earth_position = earth.at(time).position.km
+    return body_position - earth_position

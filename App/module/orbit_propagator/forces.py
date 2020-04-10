@@ -24,3 +24,9 @@ Compute the gravity force exerted by moon on the body
     :return: the force vector expressed in the geocentric frame
     """
     return (-1*G*M_L)/(norm(position-lunar_position)**3)*(position-lunar_position)
+
+
+def solar_gravity(position, solar_position):
+    return (-1 * G * M_S) / (norm(solar_position - position) ** 3) * (solar_position - position)
+
+

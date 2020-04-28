@@ -10,8 +10,8 @@ load = Loader('./data', verbose=False)
 def updateDataFiles():
     """Update Skyfield's data files."""
     print("Files are updating...")
-    ts = load.timescale()
-    planets = load('de421.bsp')
+    load.timescale()
+    load('de421.bsp')
     print("Data files have been updated.")
 
 
@@ -22,7 +22,7 @@ Compute the position of a body in the geocentric frame.
     :param time: seek time
     :return: position vector [x,y,z] where x, y, z are in km
     """
-    planets = load_file('./de421.bsp')
+    planets = load_file("C:/Users/Quentin DELAMEA/Documents/07 - Projet 1A/LEOCET/App/data/de421.bsp")
     body = planets[body_name]
     earth = planets['earth']
 

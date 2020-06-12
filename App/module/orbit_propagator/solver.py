@@ -7,19 +7,7 @@ from scipy.integrate import solve_ivp
 import numpy as np
 
 
-# Configure time frame
-ts = load.timescale()
-date = {
-        'y': 2020,
-        'm': 8,
-        'd': 28,
-        'h': 9,
-        'min': 52,
-        's': 0
-    }
-
-
-def f(t, y):
+def f(t, y, ts, date):
     """
 f is the function of the ODE formulation dy/dt = f(t,y)
     :param y: state vector
@@ -35,7 +23,7 @@ f is the function of the ODE formulation dy/dt = f(t,y)
     return [y[3], y[4], y[5], resultant[0], resultant[1], resultant[2]]
 
 
-def solve(boundary_dates, initial_data, display_times):
+def solve(boundary_dates, initial_data, display_times, ts, date):
     """
 This function solves the trajectory equation knowning the initial position and velocity and the time interval
 where you compute the trajectory.
@@ -44,4 +32,4 @@ where you compute the trajectory.
     :param display_times: a numpy array containing the times where you want to save the position
     :return: a fine mess
     """
-    return solve_ivp(f, boundary_dates, initial_data, t_eval=display_times)
+    return solve_ivp(lambda t, y: f(t, y, ts, date), boundary_dates, initial_data, t_eval=display_times)

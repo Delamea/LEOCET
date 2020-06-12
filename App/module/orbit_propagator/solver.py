@@ -2,7 +2,7 @@
 
 # Importing required modules
 from App.module.orbit_propagator.forces import *
-from App.data.load import load, geocentric_position
+from App.data.ephem import load, geocentric_position
 from scipy.integrate import solve_ivp
 import numpy as np
 
@@ -11,7 +11,7 @@ import numpy as np
 ts = load.timescale()
 date = {
         'y': 2020,
-        'm': 4,
+        'm': 8,
         'd': 28,
         'h': 9,
         'min': 52,
@@ -30,7 +30,7 @@ f is the function of the ODE formulation dy/dt = f(t,y)
     position = np.array([y[0], y[1], y[2]])
     moon_position = geocentric_position('moon', time)
     sun_position = geocentric_position('sun', time)
-    resultant = earth_spherical_gravity_force(position) + lunar_gravity_force(position, moon_position) \
+    resultant = earth_zonal_harmonics_gravity_force(position) + lunar_gravity_force(position, moon_position) \
         + solar_gravity_force(position, sun_position)
     return [y[3], y[4], y[5], resultant[0], resultant[1], resultant[2]]
 

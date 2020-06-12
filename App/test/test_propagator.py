@@ -22,3 +22,5 @@ zarray = sol.y[2]
 
 plt.plot(xarray, yarray)
 plt.show()
+
+# TODO Use satellite data from Skyfield to check if trajectories computed by LEOCET are correct

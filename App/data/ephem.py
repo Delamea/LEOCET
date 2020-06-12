@@ -4,15 +4,16 @@
 from skyfield.api import Loader, load, load_file
 
 # Specify the targeted directory
-load = Loader('./data', verbose=False)
+load = Loader('./data')
 
 
 def updateDataFiles():
     """Update Skyfield's data files."""
     print("Files are updating...")
-    load.timescale()
+    ts = load.timescale()
     load('de421.bsp')
     print("Data files have been updated.")
+    return ts
 
 
 def geocentric_position(body_name, time):
